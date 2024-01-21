@@ -1,27 +1,21 @@
 #https://leetcode.com/problems/reverse-integer/description/
 class Solution:
     def reverse(self, x: int) -> int:
-        s=str(x)
-        flag=0
-        t=s
-        if s[0]=="-":
-            t=s[1:]
-            x=int(t)
-            flag=1
-        temp=0
-        while x>0:
-            r=x%10
-            temp=(10*temp)+r
-            x=x//10
-        if flag==1:
-            if -1*temp<-2**(31):
-                return 0
-            return -1*temp
+        MAX_INT, MIN_INT = 2**31 - 1, -2**31
+        
+        isnegative = False
+        if x < 0:
+            isnegative = True
+            x = abs(x)
+        
+        rev_str = str(x)[::-1].lstrip('0')
+        
+        if not rev_str:
+            return 0 
+        
+        rev = int(rev_str) if not isnegative else -int(rev_str)
+        
+        if rev not in range(MIN_INT, MAX_INT + 1):
+            return 0
         else:
-            if temp>(2**(31))+1:
-                return 0
-            return temp
-
-a=int(input())
-ob=Solution()
-print(ob.reverse(a))
+            return rev
