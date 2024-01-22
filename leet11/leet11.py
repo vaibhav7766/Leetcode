@@ -2,7 +2,7 @@
 
 from sys import stdin
 input = stdin.readline
-    
+
 class Solution:
     def maxArea(self, height: list[int]) -> int:
         left: int = 0
@@ -16,6 +16,3 @@ class Solution:
                 all_areas.append((right - left) * height[right])
                 right -= 1
         return max(all_areas)
-
-ob = Solution()
-print(ob.maxArea([1,8,6,2,5,4,8,3,7]))
