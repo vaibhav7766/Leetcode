@@ -1,10 +1,11 @@
 #https://leetcode.com/problems/container-with-most-water/submissions/
 
 from sys import stdin
+from typing import List
 input = stdin.readline
 
 class Solution:
-    def maxArea(self, height: list[int]) -> int:
+    def maxArea(self, height: List[int]) -> int:
         left: int = 0
         right: int = len(height) - 1
         all_areas = []
